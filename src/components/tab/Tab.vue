@@ -1,0 +1,60 @@
+<template>
+  <div id="tab">
+    <router-link
+      class="tab-item"
+      v-for="(item, index) in tabs"
+      :key="index"
+      :to="item.path"
+    >
+      <sapn class="tab-link">{{ item.name }}</sapn>
+    </router-link>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Tab',
+  data () {
+    return {
+      tabs: [
+        {
+          name: '推荐',
+          path: '/recommend'
+        }, {
+          name: '歌手',
+          path: '/singer'
+        }, {
+          name: '排行',
+          path: '/topList'
+        }, {
+          name: '搜索',
+          path: '/search'
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  #tab {
+    display: flex;
+    height: 44px;
+    line-height: 44px;
+    font-size: $font-size-medium;
+    .tab-item {
+      flex: 1;
+      text-align: center;
+      .tab-link {
+        padding-bottom: 5px;
+        color: $color-text-l;
+      }
+      &.router-link-active {
+        .tab-link {
+          color: $color-theme;
+          border-bottom: 2px solid $color-theme;
+        }
+      }
+    }
+  }
+</style>
